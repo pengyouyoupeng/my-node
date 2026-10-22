@@ -19,30 +19,17 @@ import aiohttp
 # 1. 节点订阅源池与镜像配置
 # ==========================================
 
-# GitHub 活跃且持续维护的开源 Clash / Clash.Meta (Mihomo) 节点源池
+# GitHub 活跃且持续维护的优质 Clash / Clash.Meta (Mihomo) 节点源池 (专选国内高抗封锁协议)
 GITHUB_SOURCES = [
-    # --- 持续活跃的大型聚合订阅池 ---
-    "https://raw.githubusercontent.com/mahdibland/ShadowsocksAggregator/master/sub/sub_merge_yaml.yml",
-    "https://raw.githubusercontent.com/mahdibland/ShadowsocksAggregator/master/Eternity.yml",
+    # --- 持续活跃的大型多协议聚合订阅池 (优先 VLESS / Hysteria2 / Trojan / VMess) ---
+    "https://raw.githubusercontent.com/ermaozi/get_subscribe/main/subscribe/clash.yml",
     "https://raw.githubusercontent.com/Au1rxx/free-vpn-subscriptions/main/output/clash.yaml",
     "https://raw.githubusercontent.com/anaer/Sub/main/clash.yaml",
-    "https://raw.githubusercontent.com/ermaozi/get_subscribe/main/subscribe/clash.yml",
     "https://raw.githubusercontent.com/chengaopan/AutoMergePublicNodes/master/list.yml",
     "https://raw.githubusercontent.com/peasoft/NoMoreWalls/master/list.yml",
     "https://raw.githubusercontent.com/snakem982/proxypool/main/source/clash-meta-2.yaml",
     "https://raw.githubusercontent.com/ripaojiedian/freenode/main/clash",
     "https://raw.githubusercontent.com/go4sharing/sub/main/sub.yaml",
-# --- 新增的 10 个高频更新开源订阅源 ---
-    "https://raw.githubusercontent.com/aiboboxx/clashfree/main/clash.yml",
-    "https://raw.githubusercontent.com/mfuu/v2ray/master/clash.yaml",
-    "https://raw.githubusercontent.com/snakem982/proxypool/main/source/clash-meta.yaml",
-    "https://raw.githubusercontent.com/Alvin9999/pac2/master/clash.meta2/config.yaml",
-    "https://raw.githubusercontent.com/Alvin9999/pac2/master/clash.meta2/1/config.yaml",
-    "https://raw.githubusercontent.com/ts-sf/fly/main/v2",
-    "https://raw.githubusercontent.com/baipiao0/baipiao02/main/clash",
-    "https://raw.githubusercontent.com/w1770946466/Auto_proxy/main/Long_term_subscription_num",
-    "https://raw.githubusercontent.com/pawdroid/Free-servers/main/sub",
-    "https://raw.githubusercontent.com/freefq/free/master/v2"
 ]
 
 # GitHub Raw 加速镜像前缀（直连超时或被重置时自动切换）
@@ -64,8 +51,8 @@ MIHOMO_PATHS = [
     os.path.expanduser("~/.config/clash.meta/mihomo"),
 ]
 
-# 支持的协议与正则过滤（注意保留 \t 0x09, \n 0x0a, \r 0x0d 避免破坏 YAML 结构）
-SUPPORTED_TYPES = {"ss", "ssr", "vmess", "vless", "trojan", "hysteria", "hysteria2", "tuic"}
+# 针对中国大陆网络环境：剔除已被 GFW 特征识别并封死的裸 Shadowsocks (SS/SSR)，专选高抗封锁现代协议
+SUPPORTED_TYPES = {"vless", "hysteria2", "hysteria", "tuic", "trojan", "vmess"}
 CONTROL_CHAR_RE = re.compile(r'[\x00-\x08\x0b\x0c\x0e-\x1f\x7f-\x9f]')
 
 # 测速参数配置（严格把关：2秒内必须有响应，防止半死不活的节点入选）
@@ -164,35 +151,48 @@ def validate_and_clean_node(node: Dict[str, Any]) -> Dict[str, Any] | None:
     except (ValueError, TypeError):
         return None
 
-    # 必填字段严格校验与弱密协议剔除（彻底清理在 5G 蜂窝网络下被直接封杀的老旧协议）
+    # 必填字段严格校验与抗封锁清洗
     if ntype in ("vmess", "vless", "tuic") and not node.get("uuid"):
         return None
-    if ntype in ("ss", "ssr", "trojan") and not node.get("password"):
+    if ntype == "trojan" and not node.get("password"):
         return None
-    if ntype == "ss":
-        cipher = str(node.get("cipher", "")).lower()
-        # 彻底过滤 GFW 早已特征识别的弱密算法（在手机 5G 下几乎 100% 阻断）
-        if not cipher or cipher in ("rc4-md5", "table", "bf-cfb", "rc4", "seed-cfb", "none"):
-            return None
     if ntype in ("hysteria2", "hysteria") and not (node.get("password") or node.get("auth-str") or node.get("auth_str")):
         return None
     if ntype == "vmess" and "alterId" not in node:
         node["alterId"] = 0
 
+    # 1. Trojan 必须具备合法的域名 SNI 伪装，纯 IP 伪装在国内 5G 环境会被 GFW 探测直接阻断
+    if ntype == "trojan":
+        sni = str(node.get("sni") or node.get("servername") or "").strip()
+        is_ip_server = bool(re.match(r"^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$", server))
+        if not sni or re.match(r"^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$", sni):
+            if not is_ip_server:
+                node["sni"] = server
+                node["servername"] = server
+            else:
+                return None  # 纯 IP 裸握手 Trojan，大陆无法建立连接，过滤
+
+    # 2. VMess 必须具备 TLS 或 WebSocket/gRPC 传输层伪装，裸 TCP VMess 早已被特征拦截
+    if ntype == "vmess":
+        net = str(node.get("network", "tcp")).lower()
+        tls = bool(node.get("tls"))
+        if net == "tcp" and not tls:
+            return None
+
     # 修复与补充 Shadowrocket 兼容性属性
     if node.get("network") == "raw":
         node["network"] = "tcp"
 
-    # 1. 强制注入 skip-cert-verify，防止 Shadowrocket 因免费自签证书直接断连
+    # 强制注入 skip-cert-verify，防止 Shadowrocket 因自签证书或免流伪装证书阻断连接
     if node.get("tls") or ntype in ("vless", "vmess", "trojan", "hysteria2", "tuic"):
         node["skip-cert-verify"] = True
 
-    # 2. 补全 servername / sni，防止 WebSocket/gRPC TLS 节点因缺失域名握手失败
+    # 补全 servername / sni
     if node.get("tls") and not node.get("servername") and not node.get("sni"):
         if not re.match(r"^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$", server):
             node["servername"] = server
 
-    # 3. 清理 Shadowrocket 不兼容的专属高级参数
+    # 清理 Shadowrocket 不兼容的专属高级参数
     for incompatible in ("smux", "tfo", "mptcp"):
         node.pop(incompatible, None)
 
@@ -210,6 +210,9 @@ def validate_and_clean_node(node: Dict[str, Any]) -> Dict[str, Any] | None:
         wopts = node.get("ws-opts")
         if wopts is not None and not isinstance(wopts, dict):
             node["ws-opts"] = {"path": "/"}
+        elif isinstance(wopts, dict) and "path" in wopts:
+            # 标准化解码 WebSocket 路径（例如将 %2F 转换为 /），避免客户端解析 404
+            node["ws-opts"]["path"] = urllib.parse.unquote(str(wopts["path"]))
 
     return node
 
@@ -371,6 +374,12 @@ async def run_mihomo_real_test(
 # 4. 配置文件生成与主流程
 # ==========================================
 
+class NoAliasDumper(yaml.SafeDumper):
+    """彻底禁用 YAML 锚点别名（&id001/*id001），保证小火箭等手机客户端完美兼容解析"""
+    def ignore_aliases(self, data):
+        return True
+
+
 def build_clash_meta_config(proxies: List[Dict[str, Any]]) -> Dict[str, Any]:
     """构建最终导入 ClashX Meta 的完整配置文件"""
     proxy_names = [p["name"] for p in proxies]
@@ -492,9 +501,10 @@ async def main():
     os.makedirs(OUTPUT_DIR, exist_ok=True)
     output_path = os.path.join(OUTPUT_DIR, OUTPUT_FILENAME)
     with open(output_path, "w", encoding="utf-8") as f:
-        yaml.safe_dump(
+        yaml.dump(
             build_clash_meta_config(top_nodes),
             f,
+            Dumper=NoAliasDumper,
             allow_unicode=True,
             sort_keys=False,
             default_flow_style=False,
