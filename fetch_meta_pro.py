@@ -76,11 +76,12 @@ MAX_PER_C_SUBNET = 1      # 同一个 /24 C段网段最多保留 1 个节点（�
 PRECHECK_LIMIT = 800      # 提高候选池上限，确保能优选出足量节点
 FINAL_NODE_COUNT = 30     # 最终输出的节点数量
 
-# 导出与服务配置
-OUTPUT_DIR = "/Users/zjs/Desktop/freeDomain/public"
+# 导出与服务配置（自适应当前执行目录，兼容本地 Mac 与云端 Linux GitHub Actions）
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+OUTPUT_DIR = os.path.join(BASE_DIR, "public")
 OUTPUT_FILENAME = "clash_meta_30.yaml"
 LOCAL_BACKUP_DIR = "/Users/zjs/httpServer"
-PROJECT_DIR = "/Users/zjs/Desktop/freeDomain"
+PROJECT_DIR = BASE_DIR
 
 
 def get_physical_interface() -> str:
