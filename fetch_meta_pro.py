@@ -13,6 +13,8 @@ import urllib.parse
 from datetime import datetime, timedelta
 from typing import List, Dict, Any
 import yaml
+import json
+import base64
 import aiohttp
 
 # ==========================================
@@ -380,6 +382,98 @@ class NoAliasDumper(yaml.SafeDumper):
         return True
 
 
+def proxy_to_uri(node: Dict[str, Any]) -> str | None:
+    """将代理节点转换为 Shadowrocket / V2Ray 原生标准 URI 链接"""
+    ntype = node.get("type", "").lower()
+    name = urllib.parse.quote(node.get("name", "node"))
+    server = node.get("server")
+    port = node.get("port")
+
+    if not server or not port:
+        return None
+
+    if ntype == "vless":
+        uuid = node.get("uuid")
+        tls = "tls" if node.get("tls") else "none"
+        sni = node.get("servername") or node.get("sni") or ""
+        net = node.get("network", "tcp")
+        params = {"encryption": "none", "security": tls}
+        if sni:
+            params["sni"] = sni
+        if net == "ws":
+            params["type"] = "ws"
+            wopts = node.get("ws-opts", {})
+            if "path" in wopts:
+                params["path"] = wopts["path"]
+            headers = wopts.get("headers", {})
+            if "Host" in headers:
+                params["host"] = headers["Host"]
+        elif net == "grpc":
+            params["type"] = "grpc"
+            gopts = node.get("grpc-opts", {})
+            if "grpc-service-name" in gopts:
+                params["serviceName"] = gopts["grpc-service-name"]
+        if node.get("client-fingerprint"):
+            params["fp"] = node["client-fingerprint"]
+        qs = urllib.parse.urlencode(params)
+        return f"vless://{uuid}@{server}:{port}?{qs}#{name}"
+
+    elif ntype == "trojan":
+        pwd = node.get("password")
+        sni = node.get("sni") or node.get("servername") or ""
+        net = node.get("network", "tcp")
+        params = {"security": "tls"}
+        if sni:
+            params["sni"] = sni
+        if net == "ws":
+            params["type"] = "ws"
+            wopts = node.get("ws-opts", {})
+            if "path" in wopts:
+                params["path"] = wopts["path"]
+            headers = wopts.get("headers", {})
+            if "Host" in headers:
+                params["host"] = headers["Host"]
+        qs = urllib.parse.urlencode(params)
+        return f"trojan://{pwd}@{server}:{port}?{qs}#{name}"
+
+    elif ntype == "vmess":
+        vj = {
+            "v": "2",
+            "ps": node.get("name", ""),
+            "add": server,
+            "port": port,
+            "id": node.get("uuid"),
+            "aid": node.get("alterId", 0),
+            "scy": node.get("cipher", "auto"),
+            "net": node.get("network", "tcp"),
+            "type": "none",
+            "host": "",
+            "path": "",
+            "tls": "tls" if node.get("tls") else "",
+        }
+        if vj["net"] == "ws":
+            wopts = node.get("ws-opts", {})
+            if "path" in wopts:
+                vj["path"] = wopts["path"]
+            headers = wopts.get("headers", {})
+            if "Host" in headers:
+                vj["host"] = headers["Host"]
+        import base64
+        b64 = base64.b64encode(json.dumps(vj).encode()).decode()
+        return f"vmess://{b64}"
+
+    elif ntype == "hysteria2":
+        pwd = node.get("password") or node.get("auth-str") or node.get("auth")
+        sni = node.get("sni") or ""
+        params = {"insecure": "1"}
+        if sni:
+            params["sni"] = sni
+        qs = urllib.parse.urlencode(params)
+        return f"hysteria2://{pwd}@{server}:{port}?{qs}#{name}"
+
+    return None
+
+
 def build_clash_meta_config(proxies: List[Dict[str, Any]]) -> Dict[str, Any]:
     """构建最终导入 ClashX Meta 的完整配置文件"""
     proxy_names = [p["name"] for p in proxies]
@@ -510,7 +604,23 @@ async def main():
             default_flow_style=False,
         )
 
+    # 同时导出标准 Base64 订阅文件 (sub.txt 与 sub)，供 Shadowrocket / V2RayN 等客户端 100% 原生解析
+    import base64
+    uris = [proxy_to_uri(n) for n in top_nodes]
+    valid_uris = [u for u in uris if u]
+    raw_sub_text = "\n".join(valid_uris)
+    b64_sub_text = base64.b64encode(raw_sub_text.encode("utf-8")).decode("utf-8")
+
+    sub_txt_path = os.path.join(OUTPUT_DIR, "sub.txt")
+    with open(sub_txt_path, "w", encoding="utf-8") as f:
+        f.write(b64_sub_text)
+
+    sub_path = os.path.join(OUTPUT_DIR, "sub")
+    with open(sub_path, "w", encoding="utf-8") as f:
+        f.write(b64_sub_text)
+
     print(f"\n[🎉] 成功生成配置文件: {output_path} (包含 {len(top_nodes)} 个稳定节点)")
+    print(f"[🎉] 成功生成 Shadowrocket 专属 Base64 订阅: {sub_txt_path} ({len(valid_uris)} 个原生 URI)")
     print("前 10 个最佳节点预览：")
     for p in top_nodes[:10]:
         print(f"  - {p['name']} ({p['server']}:{p['port']})")
@@ -519,6 +629,7 @@ async def main():
     if os.path.exists(LOCAL_BACKUP_DIR):
         try:
             shutil.copy2(output_path, os.path.join(LOCAL_BACKUP_DIR, OUTPUT_FILENAME))
+            shutil.copy2(sub_txt_path, os.path.join(LOCAL_BACKUP_DIR, "sub.txt"))
         except Exception:
             pass
 
