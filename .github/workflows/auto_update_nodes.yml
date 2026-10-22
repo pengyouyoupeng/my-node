@@ -5,6 +5,12 @@ on:
     # 每天早晚自动定时运行两次 (UTC 22:00 = 北京时间 06:00, UTC 10:00 = 北京时间 18:00)
     - cron: '0 22,10 * * *'
   workflow_dispatch: # 支持在 GitHub 仓库 Actions 页面上手动点击运行测试
+  push:
+    branches:
+      - main
+    paths:
+      - '.github/workflows/**'
+      - 'fetch_meta_pro.py'
 
 permissions:
   contents: write
