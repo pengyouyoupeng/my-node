@@ -18,201 +18,42 @@ dns:
   - https://1.1.1.1/dns-query
   - https://8.8.8.8/dns-query
 proxies:
-- alterId: 0
-  cipher: auto
-  name: '[01] VMESS | 真连接 6ms'
-  network: tcp
-  port: 18000
-  server: 84.17.41.2
-  type: vmess
-  udp: true
-  uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
-  skip-cert-verify: true
-- name: '[02] VLESS | 真连接 8ms'
-  network: ws
-  port: 8080
-  server: 104.18.35.86
-  servername: hhlfy.twiladaphne.ndjp.net
-  tls: false
-  type: vless
-  udp: true
-  uuid: e5cc16a6-ea42-46b2-82ae-ad2157e1641b
-  ws-opts:
-    headers:
-      Host: hhlfy.twiladaphne.ndjp.net
-    path: /sg-melbi
-  skip-cert-verify: true
-- name: '[03] VLESS | 真连接 8ms'
-  network: ws
-  port: 8080
-  server: 172.67.71.187
-  servername: hhlfy.twiladaphne.ndjp.net
-  tls: false
-  type: vless
-  uuid: e5cc16a6-ea42-46b2-82ae-ad2157e1641b
-  ws-opts:
-    headers:
-      Host: hhlfy.twiladaphne.ndjp.net
-    path: /sg-melbi
-  skip-cert-verify: true
-- encryption: none
-  name: '[04] VLESS | 真连接 10ms'
-  network: ws
-  port: 443
-  server: 172.64.152.241
-  servername: ccc.010304.xyz
-  skip-cert-verify: true
-  tls: true
-  type: vless
-  uuid: d342d11e-d224-4463-b982-532309285094
-  ws-opts:
-    headers:
-      Host: ccc.010304.xyz
-    path: /
-- client-fingerprint: chrome
-  flow: xtls-rprx-vision
-  name: '[05] VLESS | 真连接 12ms'
-  network: tcp
-  port: 23576
-  reality-opts:
-    public-key: 1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s
-    short-id: '01'
-  server: 15.204.97.206
-  servername: fuck.rkn
-  tls: true
-  type: vless
-  udp: true
-  uuid: 48ff2b70-e180-582f-8866-d9a2edeed5f5
-  skip-cert-verify: true
-- client-fingerprint: chrome
-  flow: xtls-rprx-vision
-  name: '[06] VLESS | 真连接 12ms'
-  network: tcp
-  port: 443
-  reality-opts:
-    public-key: nqwCf6oW49tEtmQ0EzxigZ0uu1pg0E30CS54G40Iti0
-    short-id: 4477382ff6d3d41c
-  server: 51.81.203.63
-  servername: www.icloud.com
-  tls: true
-  type: vless
-  udp: true
-  uuid: cb2dbb6a-a1ea-4023-9ace-6466cee57241
-  skip-cert-verify: true
-- client-fingerprint: chrome
-  flow: xtls-rprx-vision
-  name: '[07] VLESS | 真连接 19ms'
-  network: tcp
-  port: 443
-  reality-opts:
-    public-key: p8VhFzvFOBAhWAEAeWmwDxT3xBSRsGYixqi0qnLFnBM
-    short-id: 21270a66
-  server: 44.248.233.99
-  servername: aws.amazon.com
-  tls: true
-  type: vless
-  udp: true
-  uuid: 37615d66-5467-44a3-bc23-f2c3bef7f761
-  skip-cert-verify: true
-- alterId: 0
-  cipher: auto
-  name: '[08] VMESS | 真连接 25ms'
-  network: tcp
-  port: 18000
-  server: 169.197.142.22
-  type: vmess
-  udp: true
-  uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
-  skip-cert-verify: true
-- client-fingerprint: chrome
-  name: '[09] VLESS | 真连接 26ms'
-  network: tcp
-  port: 61000
-  reality-opts:
-    public-key: c7XtbOUOg19bgo2N-ufXbZHaGHuSB7jAdvmj1zchRn4
-    short-id: ecf5
-  server: 173.249.210.179
-  servername: www.amd.com
-  tls: true
-  type: vless
-  udp: true
-  uuid: 12f4c3f6-ecce-4586-b39d-987757ea9b3b
-  skip-cert-verify: true
-- client-fingerprint: qq
-  flow: xtls-rprx-vision
-  name: '[10] VLESS | 真连接 34ms'
-  network: tcp
-  port: 443
-  reality-opts:
-    public-key: StPbcmBuzpuYUfa4oZ5SI3Bq1OSF_-oU1vp2AcyvQVE
-    short-id: 19296c9f1bf9c7b1
-  server: 195.123.240.65
-  servername: www.cloudflare.com
-  tls: true
-  type: vless
-  udp: true
-  uuid: ce18d0eb-5c71-41f9-96e5-1632e22456e4
-  skip-cert-verify: true
-- client-fingerprint: random
-  flow: xtls-rprx-vision
-  name: '[11] VLESS | 真连接 40ms'
-  network: tcp
-  port: 443
-  reality-opts:
-    public-key: XY0OTrgnRWxHbqBC8u4qFWvZakjNZY83AAnL_lwHu1M
-    short-id: 7f
-  server: 154.40.55.185
-  servername: www.oracle.com
-  tls: true
-  type: vless
-  udp: true
-  uuid: 52919204-4ed9-42c8-97a0-0f01d007f898
-  skip-cert-verify: true
-- alterId: 0
-  cipher: auto
-  name: '[12] VMESS | 真连接 56ms'
-  network: tcp
-  port: 18000
-  server: 23.162.200.198
-  type: vmess
-  udp: true
-  uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
-  skip-cert-verify: true
-- alterId: 0
-  cipher: auto
-  name: '[13] VMESS | 真连接 56ms'
-  network: tcp
-  port: 18000
-  server: 134.195.196.211
-  type: vmess
-  udp: true
-  uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
-  skip-cert-verify: true
-- client-fingerprint: chrome
-  flow: xtls-rprx-vision
-  name: '[14] VLESS | 真连接 54ms'
-  network: tcp
-  port: 443
-  reality-opts:
-    public-key: xPnpkXu5qfwIArlHKvJsqKJnGdGbJK1tT2GzWMyLohA
-    short-id: 9c56fddf237e8eaf
-  server: 195.211.98.43
-  servername: www.cloudflare.com
-  tls: true
-  type: vless
-  udp: true
-  uuid: 1b4b11d5-4c2d-4533-9a55-636757cdee94
-  skip-cert-verify: true
-- name: '[15] HYSTERIA2 | 真连接 60ms'
+- name: '[01] HYSTERIA2 | 真连接 3ms'
   password: 4291c983-c520-46ac-82cc-48f14bef573f
   port: 35013
   server: 129.213.91.185
   skip-cert-verify: true
-  sni: www.bing.com
+  sni: 129.213.91.185
   type: hysteria2
+- client-fingerprint: chrome
+  encryption: none
+  name: '[02] VLESS | 真连接 6ms'
+  network: ws
+  port: 443
+  server: ccc.010304.xyz
+  servername: ccc.010304.xyz
+  tls: true
+  type: vless
+  uuid: d342d11e-d224-4463-b982-532309285094
+  ws-opts:
+    path: /
+  skip-cert-verify: true
+- name: '[03] VLESS | 真连接 6ms'
+  type: vless
+  network: ws
+  server: 172.67.71.187
+  port: 8080
+  uuid: e5cc16a6-ea42-46b2-82ae-ad2157e1641b
+  servername: hhlfy.twiladaphne.ndjp.net
+  tls: false
+  ws-opts:
+    headers:
+      Host: hhlfy.twiladaphne.ndjp.net
+    path: /sg-melbi
+  skip-cert-verify: true
 - alterId: 0
-  cipher: auto
-  name: '[16] VMESS | 真连接 62ms'
+  cipher: aes-128-gcm
+  name: '[04] VMESS | 真连接 6ms'
   network: tcp
   port: 18000
   server: 67.220.85.46
@@ -222,7 +63,7 @@ proxies:
   skip-cert-verify: true
 - client-fingerprint: chrome
   flow: xtls-rprx-vision
-  name: '[17] VLESS | 真连接 62ms'
+  name: '[05] VLESS | 真连接 8ms'
   network: tcp
   port: 443
   reality-opts:
@@ -235,40 +76,52 @@ proxies:
   udp: true
   uuid: 00144519-7e0d-476b-8d28-435576af9262
   skip-cert-verify: true
-- name: '[18] VLESS | 真连接 64ms'
-  type: vless
-  server: 23.160.56.99
-  port: 2087
-  uuid: f1e7eafa-0d6f-441e-8565-29f34171aef2
-  tls: false
-  skip-cert-verify: true
-  udp: true
 - client-fingerprint: ios
   flow: xtls-rprx-vision
-  name: '[19] VLESS | 真连接 64ms'
+  name: '[06] VLESS | 真连接 8ms'
   network: tcp
   port: 443
   reality-opts:
     public-key: e2RLf57Li_-MDZGE9ss1BWPgP54mqRb5PfXhW2jcVVg
     short-id: c39cc7310a
-  server: 169.40.42.35
+  server: 169.40.42.225
   servername: yahoo.com
   tls: true
   type: vless
   udp: true
   uuid: d65cc14c-f53f-4fe2-b262-97856601319c
   skip-cert-verify: true
-- name: '[20] VLESS | 真连接 64ms'
-  network: tcp
-  port: 10443
-  server: 45.138.100.248
+- name: '[07] VLESS | 真连接 8ms'
+  network: ws
+  port: 2082
+  server: 104.18.35.86
+  servername: hhlfy.twiladaphne.ndjp.net
+  tls: false
+  type: vless
+  uuid: e5cc16a6-ea42-46b2-82ae-ad2157e1641b
+  ws-opts:
+    headers:
+      Host: hhlfy.twiladaphne.ndjp.net
+    path: /fp
+  skip-cert-verify: true
+- client-fingerprint: chrome
+  flow: xtls-rprx-vision
+  name: '[08] VLESS | 真连接 10ms'
+  network: tcp#🍎94@oneclickvpnkeys
+  port: 443
+  reality-opts:
+    public-key: H3R3BUAl7thrIZsznTbb-eRREIjQOH2f3WO0oTN7OGY
+    short-id: a0e2a6074c6456b0
+  server: 195.123.235.183
+  servername: gateway.icloud.com
+  tls: true
   type: vless
   udp: true
-  uuid: ae908ff5-f749-402c-af25-e6e9aef4d6bb
+  uuid: c14ec728-3eca-4750-87fc-fd1e6aeb81d5
   skip-cert-verify: true
-- client-fingerprint: random
+- client-fingerprint: chrome
   flow: xtls-rprx-vision
-  name: '[21] VLESS | 真连接 64ms'
+  name: '[09] VLESS | 真连接 10ms'
   network: tcp
   port: 443
   reality-opts:
@@ -281,22 +134,41 @@ proxies:
   udp: true
   uuid: 1f8cf47a-b66a-4916-979f-26edfcf44eea
   skip-cert-verify: true
-- client-fingerprint: firefox
-  name: '[22] VLESS | 真连接 66ms'
+- name: '[10] VLESS | 真连接 10ms'
   network: tcp
-  port: 2112
-  reality-opts:
-    public-key: p8pUe3hwND5rhAti-yRQ5qMaIkNdhxOV1K1jpbtJlEQ
-    short-id: 125ba3
-  server: 208.84.100.209
-  servername: play.google.com
-  tls: true
+  port: 10443
+  server: 45.138.100.248
   type: vless
   udp: true
-  uuid: 36c3dcc2-17b6-4478-b8a7-3978e6d5afe9
+  uuid: ae908ff5-f749-402c-af25-e6e9aef4d6bb
   skip-cert-verify: true
 - client-fingerprint: chrome
-  name: '[23] VLESS | 真连接 66ms'
+  encryption: none
+  name: '[11] VLESS | 真连接 8ms'
+  network: ws
+  port: 443
+  server: 172.64.152.241
+  servername: ccc.010304.xyz
+  tls: true
+  type: vless
+  uuid: d342d11e-d224-4463-b982-532309285094
+  ws-opts:
+    headers:
+      Host: ccc.010304.xyz
+    path: /fp=chrome
+  skip-cert-verify: true
+- alterId: 0
+  cipher: auto
+  name: '[12] VMESS | 真连接 14ms'
+  network: tcp
+  port: 18000
+  server: 67.220.95.3
+  type: vmess
+  udp: true
+  uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
+  skip-cert-verify: true
+- client-fingerprint: chrome
+  name: '[13] VLESS | 真连接 16ms'
   network: tcp
   port: 2053
   reality-opts:
@@ -309,9 +181,9 @@ proxies:
   udp: true
   uuid: dc620cd6-a9d8-4a0f-8f18-006b895db77e
   skip-cert-verify: true
-- client-fingerprint: random
+- client-fingerprint: chrome
   flow: xtls-rprx-vision
-  name: '[24] VLESS | 真连接 68ms'
+  name: '[14] VLESS | 真连接 17ms'
   network: tcp
   port: 443
   reality-opts:
@@ -326,22 +198,42 @@ proxies:
   skip-cert-verify: true
 - client-fingerprint: chrome
   flow: xtls-rprx-vision
-  name: '[25] VLESS | 真连接 68ms'
+  name: '[15] VLESS | 真连接 19ms'
   network: tcp
   port: 443
   reality-opts:
-    public-key: H3R3BUAl7thrIZsznTbb-eRREIjQOH2f3WO0oTN7OGY
-    short-id: a0e2a6074c6456b0
-  server: 195.123.235.183
-  servername: gateway.icloud.com
+    public-key: xPnpkXu5qfwIArlHKvJsqKJnGdGbJK1tT2GzWMyLohA
+    short-id: 9c56fddf237e8eaf
+  server: 195.211.98.43
+  servername: www.cloudflare.com
   tls: true
   type: vless
   udp: true
-  uuid: c14ec728-3eca-4750-87fc-fd1e6aeb81d5
+  uuid: 1b4b11d5-4c2d-4533-9a55-636757cdee94
+  skip-cert-verify: true
+- alterId: 0
+  cipher: auto
+  name: '[16] VMESS | 真连接 22ms'
+  network: tcp
+  port: 18000
+  server: 23.162.200.198
+  type: vmess
+  udp: true
+  uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
+  skip-cert-verify: true
+- alterId: 0
+  cipher: auto
+  name: '[17] VMESS | 真连接 23ms'
+  network: tcp
+  port: 18000
+  server: 134.195.196.211
+  type: vmess
+  udp: true
+  uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
   skip-cert-verify: true
 - client-fingerprint: chrome
   flow: xtls-rprx-vision
-  name: '[26] VLESS | 真连接 71ms'
+  name: '[18] VLESS | 真连接 27ms'
   network: tcp
   port: 443
   reality-opts:
@@ -356,17 +248,17 @@ proxies:
   skip-cert-verify: true
 - alterId: 0
   cipher: auto
-  name: '[27] VMESS | 真连接 72ms'
+  name: '[19] VMESS | 真连接 28ms'
   network: tcp
   port: 18000
-  server: 67.220.95.3
+  server: 38.110.1.246
   type: vmess
   udp: true
   uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
   skip-cert-verify: true
 - client-fingerprint: chrome
   flow: xtls-rprx-vision
-  name: '[28] VLESS | 真连接 72ms'
+  name: '[20] VLESS | 真连接 25ms'
   network: tcp
   port: 28190
   reality-opts:
@@ -379,30 +271,140 @@ proxies:
   udp: true
   uuid: 14c80e0e-f7ce-4991-94fc-99a1db4a9b1e
   skip-cert-verify: true
+- client-fingerprint: firefox
+  flow: xtls-rprx-vision
+  name: '[21] VLESS | 真连接 42ms'
+  network: tcp
+  port: 443
+  reality-opts:
+    public-key: 7j3hmlHrEDk3Kjx-dFG3E3jf0c6PZF45trIPFsuKWmI
+    short-id: ''
+  server: 23.191.200.207
+  servername: dl.google.com
+  tls: true
+  type: vless
+  udp: true
+  uuid: 982ce053-c61c-4daa-97c1-1f45810dc1ec
+  skip-cert-verify: true
+- client-fingerprint: chrome
+  flow: xtls-rprx-vision
+  name: '[22] VLESS | 真连接 60ms'
+  network: tcp
+  port: 443
+  reality-opts:
+    public-key: XY0OTrgnRWxHbqBC8u4qFWvZakjNZY83AAnL_lwHu1M
+    short-id: 7f
+  server: 154.40.55.185
+  servername: www.oracle.com
+  tls: true
+  type: vless
+  udp: true
+  uuid: 52919204-4ed9-42c8-97a0-0f01d007f898
+  skip-cert-verify: true
+- client-fingerprint: ios
+  flow: xtls-rprx-vision
+  name: '[23] VLESS | 真连接 60ms'
+  network: tcp
+  port: 443
+  reality-opts:
+    public-key: StPbcmBuzpuYUfa4oZ5SI3Bq1OSF_-oU1vp2AcyvQVE
+    short-id: 19296c9f1bf9c7b1
+  server: 195.123.240.65
+  servername: www.cloudflare.com
+  tls: true
+  type: vless
+  udp: true
+  uuid: ce18d0eb-5c71-41f9-96e5-1632e22456e4
+  skip-cert-verify: true
+- client-fingerprint: firefox
+  flow: xtls-rprx-vision
+  name: '[24] VLESS | 真连接 60ms'
+  network: tcp
+  port: 443
+  reality-opts:
+    public-key: yFvOpugh65xKQNAwKrhitv4d2pflD8QwNFMj-jDOmT8
+    short-id: 0123456789abcdef
+  server: 216.167.126.97
+  servername: www.cloudflare.com
+  tls: true
+  type: vless
+  udp: true
+  uuid: e5c3d067-7a15-4977-90c0-7e0f6e896a09
+  skip-cert-verify: true
 - alterId: 0
   cipher: auto
-  name: '[29] VMESS | 真连接 72ms'
+  name: '[25] VMESS | 真连接 64ms'
   network: tcp
   port: 18000
-  server: 38.91.107.49
+  server: 169.197.142.22
   type: vmess
   udp: true
   uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
   skip-cert-verify: true
-- client-fingerprint: chrome
-  flow: xtls-rprx-vision
-  name: '[30] VLESS | 真连接 80ms'
+- alterId: 0
+  cipher: auto
+  name: '[26] VMESS | 真连接 64ms'
   network: tcp
-  port: 2093
+  port: 18000
+  server: 84.17.41.2
+  type: vmess
+  udp: true
+  uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
+  skip-cert-verify: true
+- alterId: 0
+  cipher: auto
+  name: '[27] VMESS | 真连接 68ms'
+  network: ws
+  port: 80
+  server: 23.158.72.131
+  type: vmess
+  udp: true
+  uuid: 8a9aaa70-ced9-11f1-b934-205c6d5f5d78
+  skip-cert-verify: true
+- client-fingerprint: random
+  flow: xtls-rprx-vision
+  name: '[28] VLESS | 真连接 68ms'
+  network: tcp
+  port: 443
   reality-opts:
-    public-key: C_GA8wVjeLmyqLK6em5OHn4WPlsbndA-RyvyNU1aGFM
-    short-id: 8a9725533854a7e8
-  server: 38.145.220.58
-  servername: www.apple.com
+    public-key: SmgYcFIvvFXW3xh4gvGhIJuQsaZvWkAylcjB6TEddEs
+    short-id: 896f52ba2cfca903
+  server: 47.251.108.158
+  servername: www.cloudflare.com
   tls: true
   type: vless
   udp: true
-  uuid: 0b418782-e023-447e-ba99-e66b84ff118d
+  uuid: 975fc322-6e38-434b-a53c-d39fed49b9a9
+  skip-cert-verify: true
+- client-fingerprint: chrome
+  flow: xtls-rprx-vision
+  name: '[29] VLESS | 真连接 68ms'
+  network: tcp
+  port: 443
+  reality-opts:
+    public-key: nqwCf6oW49tEtmQ0EzxigZ0uu1pg0E30CS54G40Iti0
+    short-id: 4477382ff6d3d41c
+  server: 51.81.203.63
+  servername: www.icloud.com
+  tls: true
+  type: vless
+  udp: true
+  uuid: cb2dbb6a-a1ea-4023-9ace-6466cee57241
+  skip-cert-verify: true
+- client-fingerprint: chrome
+  flow: xtls-rprx-vision
+  name: '[30] VLESS | 真连接 69ms'
+  network: tcp
+  port: 23576
+  reality-opts:
+    public-key: 1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s
+    short-id: '01'
+  server: 15.204.97.216
+  servername: fuck.rkn
+  tls: true
+  type: vless
+  udp: true
+  uuid: 48ff2b70-e180-582f-8866-d9a2edeed5f5
   skip-cert-verify: true
 proxy-groups:
 - name: 🚀 节点选择
@@ -410,106 +412,106 @@ proxy-groups:
   proxies:
   - ⚡ 自动最快
   - 🛡️ 故障转移
-  - '[01] VMESS | 真连接 6ms'
-  - '[02] VLESS | 真连接 8ms'
-  - '[03] VLESS | 真连接 8ms'
-  - '[04] VLESS | 真连接 10ms'
-  - '[05] VLESS | 真连接 12ms'
-  - '[06] VLESS | 真连接 12ms'
-  - '[07] VLESS | 真连接 19ms'
-  - '[08] VMESS | 真连接 25ms'
-  - '[09] VLESS | 真连接 26ms'
-  - '[10] VLESS | 真连接 34ms'
-  - '[11] VLESS | 真连接 40ms'
-  - '[12] VMESS | 真连接 56ms'
-  - '[13] VMESS | 真连接 56ms'
-  - '[14] VLESS | 真连接 54ms'
-  - '[15] HYSTERIA2 | 真连接 60ms'
-  - '[16] VMESS | 真连接 62ms'
-  - '[17] VLESS | 真连接 62ms'
-  - '[18] VLESS | 真连接 64ms'
-  - '[19] VLESS | 真连接 64ms'
-  - '[20] VLESS | 真连接 64ms'
-  - '[21] VLESS | 真连接 64ms'
-  - '[22] VLESS | 真连接 66ms'
-  - '[23] VLESS | 真连接 66ms'
-  - '[24] VLESS | 真连接 68ms'
-  - '[25] VLESS | 真连接 68ms'
-  - '[26] VLESS | 真连接 71ms'
-  - '[27] VMESS | 真连接 72ms'
-  - '[28] VLESS | 真连接 72ms'
-  - '[29] VMESS | 真连接 72ms'
-  - '[30] VLESS | 真连接 80ms'
+  - '[01] HYSTERIA2 | 真连接 3ms'
+  - '[02] VLESS | 真连接 6ms'
+  - '[03] VLESS | 真连接 6ms'
+  - '[04] VMESS | 真连接 6ms'
+  - '[05] VLESS | 真连接 8ms'
+  - '[06] VLESS | 真连接 8ms'
+  - '[07] VLESS | 真连接 8ms'
+  - '[08] VLESS | 真连接 10ms'
+  - '[09] VLESS | 真连接 10ms'
+  - '[10] VLESS | 真连接 10ms'
+  - '[11] VLESS | 真连接 8ms'
+  - '[12] VMESS | 真连接 14ms'
+  - '[13] VLESS | 真连接 16ms'
+  - '[14] VLESS | 真连接 17ms'
+  - '[15] VLESS | 真连接 19ms'
+  - '[16] VMESS | 真连接 22ms'
+  - '[17] VMESS | 真连接 23ms'
+  - '[18] VLESS | 真连接 27ms'
+  - '[19] VMESS | 真连接 28ms'
+  - '[20] VLESS | 真连接 25ms'
+  - '[21] VLESS | 真连接 42ms'
+  - '[22] VLESS | 真连接 60ms'
+  - '[23] VLESS | 真连接 60ms'
+  - '[24] VLESS | 真连接 60ms'
+  - '[25] VMESS | 真连接 64ms'
+  - '[26] VMESS | 真连接 64ms'
+  - '[27] VMESS | 真连接 68ms'
+  - '[28] VLESS | 真连接 68ms'
+  - '[29] VLESS | 真连接 68ms'
+  - '[30] VLESS | 真连接 69ms'
   - DIRECT
 - name: ⚡ 自动最快
   type: url-test
   proxies:
-  - '[01] VMESS | 真连接 6ms'
-  - '[02] VLESS | 真连接 8ms'
-  - '[03] VLESS | 真连接 8ms'
-  - '[04] VLESS | 真连接 10ms'
-  - '[05] VLESS | 真连接 12ms'
-  - '[06] VLESS | 真连接 12ms'
-  - '[07] VLESS | 真连接 19ms'
-  - '[08] VMESS | 真连接 25ms'
-  - '[09] VLESS | 真连接 26ms'
-  - '[10] VLESS | 真连接 34ms'
-  - '[11] VLESS | 真连接 40ms'
-  - '[12] VMESS | 真连接 56ms'
-  - '[13] VMESS | 真连接 56ms'
-  - '[14] VLESS | 真连接 54ms'
-  - '[15] HYSTERIA2 | 真连接 60ms'
-  - '[16] VMESS | 真连接 62ms'
-  - '[17] VLESS | 真连接 62ms'
-  - '[18] VLESS | 真连接 64ms'
-  - '[19] VLESS | 真连接 64ms'
-  - '[20] VLESS | 真连接 64ms'
-  - '[21] VLESS | 真连接 64ms'
-  - '[22] VLESS | 真连接 66ms'
-  - '[23] VLESS | 真连接 66ms'
-  - '[24] VLESS | 真连接 68ms'
-  - '[25] VLESS | 真连接 68ms'
-  - '[26] VLESS | 真连接 71ms'
-  - '[27] VMESS | 真连接 72ms'
-  - '[28] VLESS | 真连接 72ms'
-  - '[29] VMESS | 真连接 72ms'
-  - '[30] VLESS | 真连接 80ms'
+  - '[01] HYSTERIA2 | 真连接 3ms'
+  - '[02] VLESS | 真连接 6ms'
+  - '[03] VLESS | 真连接 6ms'
+  - '[04] VMESS | 真连接 6ms'
+  - '[05] VLESS | 真连接 8ms'
+  - '[06] VLESS | 真连接 8ms'
+  - '[07] VLESS | 真连接 8ms'
+  - '[08] VLESS | 真连接 10ms'
+  - '[09] VLESS | 真连接 10ms'
+  - '[10] VLESS | 真连接 10ms'
+  - '[11] VLESS | 真连接 8ms'
+  - '[12] VMESS | 真连接 14ms'
+  - '[13] VLESS | 真连接 16ms'
+  - '[14] VLESS | 真连接 17ms'
+  - '[15] VLESS | 真连接 19ms'
+  - '[16] VMESS | 真连接 22ms'
+  - '[17] VMESS | 真连接 23ms'
+  - '[18] VLESS | 真连接 27ms'
+  - '[19] VMESS | 真连接 28ms'
+  - '[20] VLESS | 真连接 25ms'
+  - '[21] VLESS | 真连接 42ms'
+  - '[22] VLESS | 真连接 60ms'
+  - '[23] VLESS | 真连接 60ms'
+  - '[24] VLESS | 真连接 60ms'
+  - '[25] VMESS | 真连接 64ms'
+  - '[26] VMESS | 真连接 64ms'
+  - '[27] VMESS | 真连接 68ms'
+  - '[28] VLESS | 真连接 68ms'
+  - '[29] VLESS | 真连接 68ms'
+  - '[30] VLESS | 真连接 69ms'
   url: https://www.google.com/generate_204
   interval: 300
   tolerance: 50
 - name: 🛡️ 故障转移
   type: fallback
   proxies:
-  - '[01] VMESS | 真连接 6ms'
-  - '[02] VLESS | 真连接 8ms'
-  - '[03] VLESS | 真连接 8ms'
-  - '[04] VLESS | 真连接 10ms'
-  - '[05] VLESS | 真连接 12ms'
-  - '[06] VLESS | 真连接 12ms'
-  - '[07] VLESS | 真连接 19ms'
-  - '[08] VMESS | 真连接 25ms'
-  - '[09] VLESS | 真连接 26ms'
-  - '[10] VLESS | 真连接 34ms'
-  - '[11] VLESS | 真连接 40ms'
-  - '[12] VMESS | 真连接 56ms'
-  - '[13] VMESS | 真连接 56ms'
-  - '[14] VLESS | 真连接 54ms'
-  - '[15] HYSTERIA2 | 真连接 60ms'
-  - '[16] VMESS | 真连接 62ms'
-  - '[17] VLESS | 真连接 62ms'
-  - '[18] VLESS | 真连接 64ms'
-  - '[19] VLESS | 真连接 64ms'
-  - '[20] VLESS | 真连接 64ms'
-  - '[21] VLESS | 真连接 64ms'
-  - '[22] VLESS | 真连接 66ms'
-  - '[23] VLESS | 真连接 66ms'
-  - '[24] VLESS | 真连接 68ms'
-  - '[25] VLESS | 真连接 68ms'
-  - '[26] VLESS | 真连接 71ms'
-  - '[27] VMESS | 真连接 72ms'
-  - '[28] VLESS | 真连接 72ms'
-  - '[29] VMESS | 真连接 72ms'
-  - '[30] VLESS | 真连接 80ms'
+  - '[01] HYSTERIA2 | 真连接 3ms'
+  - '[02] VLESS | 真连接 6ms'
+  - '[03] VLESS | 真连接 6ms'
+  - '[04] VMESS | 真连接 6ms'
+  - '[05] VLESS | 真连接 8ms'
+  - '[06] VLESS | 真连接 8ms'
+  - '[07] VLESS | 真连接 8ms'
+  - '[08] VLESS | 真连接 10ms'
+  - '[09] VLESS | 真连接 10ms'
+  - '[10] VLESS | 真连接 10ms'
+  - '[11] VLESS | 真连接 8ms'
+  - '[12] VMESS | 真连接 14ms'
+  - '[13] VLESS | 真连接 16ms'
+  - '[14] VLESS | 真连接 17ms'
+  - '[15] VLESS | 真连接 19ms'
+  - '[16] VMESS | 真连接 22ms'
+  - '[17] VMESS | 真连接 23ms'
+  - '[18] VLESS | 真连接 27ms'
+  - '[19] VMESS | 真连接 28ms'
+  - '[20] VLESS | 真连接 25ms'
+  - '[21] VLESS | 真连接 42ms'
+  - '[22] VLESS | 真连接 60ms'
+  - '[23] VLESS | 真连接 60ms'
+  - '[24] VLESS | 真连接 60ms'
+  - '[25] VMESS | 真连接 64ms'
+  - '[26] VMESS | 真连接 64ms'
+  - '[27] VMESS | 真连接 68ms'
+  - '[28] VLESS | 真连接 68ms'
+  - '[29] VLESS | 真连接 68ms'
+  - '[30] VLESS | 真连接 69ms'
   url: https://www.google.com/generate_204
   interval: 300
 rules:
