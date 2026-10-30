@@ -18,127 +18,37 @@ dns:
   - https://1.1.1.1/dns-query
   - https://8.8.8.8/dns-query
 proxies:
+- client-fingerprint: chrome
+  flow: xtls-rprx-vision
+  name: '[01] VLESS | 真连接 4ms'
+  network: tcp
+  port: 443
+  reality-opts:
+    public-key: H56cOJhw0xw76lDEpt7IuJJmVGemK6_CK34KtHwDMX8
+    short-id: ''
+  server: 47.251.25.74
+  servername: www.amazon.com
+  tls: true
+  type: vless
+  udp: true
+  uuid: 18805ff3-b420-45de-af18-93be14024ae8
+  skip-cert-verify: true
 - alterId: 0
   cipher: auto
-  name: '[01] VMESS | 真连接 2ms'
+  name: '[02] VMESS | 真连接 4ms'
   network: tcp
-  port: 18000
-  server: 169.197.142.22
+  port: 10087
+  server: 43.130.35.53
   type: vmess
   udp: true
-  uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
+  uuid: 8e93b009-f1af-448a-b8ef-b110849a35f0
   skip-cert-verify: true
-- client-fingerprint: chrome
-  name: '[02] VLESS | 真连接 5ms'
-  network: ws
-  port: 443
-  server: 104.18.40.100
-  servername: ccc.010304.xyz
-  tls: true
-  type: vless
-  uuid: d342d11e-d224-4463-b982-532309285094
-  ws-opts:
-    headers:
-      Host: ccc.010304.xyz
-    path: /
-  skip-cert-verify: true
-- encryption: none
-  name: '[03] VLESS | 真连接 5ms'
-  network: ws
-  port: 443
-  server: 172.64.152.241
-  servername: ccc.010304.xyz
-  skip-cert-verify: true
-  tls: true
-  type: vless
-  uuid: d342d11e-d224-4463-b982-532309285094
-  ws-opts:
-    headers:
-      Host: ccc.010304.xyz
-    path: /
-- name: '[04] TROJAN | 真连接 4ms'
-  password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
-  port: 443
-  server: 167.88.61.20
-  skip-cert-verify: true
-  sni: api.browseseniorrolesandenhanceyourcareertoday.com
-  type: trojan
-  udp: true
 - client-fingerprint: chrome
   encryption: none
-  name: '[05] VLESS | 真连接 4ms'
+  name: '[03] VLESS | 真连接 5ms'
   network: ws
-  port: 443
-  server: 172.66.0.162
-  servername: ccc.010304.xyz
-  tls: true
-  type: vless
-  uuid: d342d11e-d224-4463-b982-532309285094
-  ws-opts:
-    headers:
-      Host: ccc.010304.xyz
-    path: /
-  skip-cert-verify: true
-- name: '[06] VLESS | 真连接 6ms'
-  server: 104.18.41.86
-  port: 443
-  type: vless
-  uuid: d342d11e-d224-4463-b982-532309285094
-  tls: true
-  servername: ccc.010304.xyz
-  client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: ccc.010304.xyz
-  udp: true
-  skip-cert-verify: true
-- client-fingerprint: chrome
-  name: '[07] VLESS | 真连接 6ms'
-  network: ws
-  port: 443
-  server: 172.67.76.40
-  servername: ccc.010304.xyz
-  tls: true
-  type: vless
-  uuid: d342d11e-d224-4463-b982-532309285094
-  ws-opts:
-    headers:
-      Host: ccc.010304.xyz
-    path: /
-  skip-cert-verify: true
-- client-fingerprint: unsafe
-  name: '[08] VLESS | 真连接 7ms'
-  network: ws
-  port: 443
-  server: 104.18.45.38
-  servername: ccc.010304.xyz
-  tls: true
-  type: vless
-  udp: true
-  uuid: d342d11e-d224-4463-b982-532309285094
-  ws-opts:
-    headers:
-      Host: ccc.010304.xyz
-    path: /fp
-  skip-cert-verify: true
-- name: '[09] VLESS | 真连接 7ms'
-  type: vless
-  network: ws
-  server: 104.17.44.17
-  port: 8080
-  uuid: e5cc16a6-ea42-46b2-82ae-ad2157e1641b
-  tls: false
-  ws-opts:
-    headers:
-      Host: hhlfy.twiladaphne.ndjp.net
-    path: /sg-melbi
-  skip-cert-verify: true
-- name: '[10] VLESS | 真连接 8ms'
-  network: ws
-  port: 8080
-  server: 172.64.150.43
+  port: 2082
+  server: 172.64.150.28
   servername: hhlfy.twiladaphne.ndjp.net
   tls: false
   type: vless
@@ -146,38 +56,308 @@ proxies:
   ws-opts:
     headers:
       Host: hhlfy.twiladaphne.ndjp.net
-    path: /sg-melbi
+    path: /fp
   skip-cert-verify: true
-- name: '[11] VLESS | 真连接 8ms'
-  type: vless
+- client-fingerprint: unsafe
+  encryption: none
+  name: '[04] VLESS | 真连接 5ms'
   network: ws
-  server: 104.18.0.181
-  port: 8080
-  uuid: e5cc16a6-ea42-46b2-82ae-ad2157e1641b
-  tls: false
+  port: 443
+  server: 104.21.70.21
+  servername: nautica-cff.kloningstrife002.workers.dev
+  tls: true
+  type: vless
+  uuid: fc60147e-76b8-4bc5-b691-90b2da79e3d2
   ws-opts:
     headers:
-      Host: hhlfy.twiladaphne.ndjp.net
+      Host: nautica-cff.kloningstrife002.workers.dev
+    path: /138.2.74.219-28616
+  skip-cert-verify: true
+- name: '[05] VLESS | 真连接 6ms'
+  type: vless
+  network: ws
+  server: 172.66.148.229
+  port: 8443
+  uuid: 767b6340-96dc-4aa0-8013-a8af7513d920
+  servername: c7dabe95.proxy-978.pages.dev
+  skip-cert-verify: true
+  tls: true
+  udp: true
+  client-fingerprint: chrome
+  ws-opts:
+    headers:
+      Host: c7dabe95.proxy-978.pages.dev
+- client-fingerprint: unsafe
+  encryption: none
+  name: '[06] VLESS | 真连接 6ms'
+  network: ws
+  port: 443
+  server: 104.21.221.158
+  servername: ccc.010304.xyz
+  skip-cert-verify: true
+  tls: true
+  type: vless
+  uuid: d342d11e-d224-4463-b982-532309285094
+  ws-opts:
+    headers:
+      Host: ccc.010304.xyz
+    path: /fp=chrome
+- client-fingerprint: chrome
+  encryption: none
+  name: '[07] VLESS | 真连接 6ms'
+  network: ws
+  port: 443
+  server: vl.cocopon.top
+  servername: vl.cocopon.top
+  tls: true
+  type: vless
+  uuid: 44f06ad1-982c-4e03-849f-899c1c8dc14f
+  ws-opts:
+    headers:
+      Host: vl.cocopon.top
     path: /
   skip-cert-verify: true
-- client-fingerprint: chrome
-  flow: xtls-rprx-vision
-  name: '[12] VLESS | 真连接 10ms'
-  network: tcp
+- type: vless
+  name: '[08] VLESS | 真连接 6ms'
+  server: 89.117.112.30
+  port: 8880
+  uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: vms.lifetime11.workers.dev
+- type: vless
+  name: '[09] VLESS | 真连接 6ms'
+  server: 185.193.29.123
   port: 443
-  reality-opts:
-    public-key: XY0OTrgnRWxHbqBC8u4qFWvZakjNZY83AAnL_lwHu1M
-    short-id: e726fb
-  server: 154.40.55.185
-  servername: www.oracle.com
+  uuid: 1d16c6e0-1bbe-435b-b661-90043fee999c
+  udp: true
+  tls: true
+  servername: notls.lukongtou.eu.org
+  sni: notls.lukongtou.eu.org
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: Telegram-WangCai2🇨🇳
+    headers:
+      Host: notls.lukongtou.eu.org
+- client-fingerprint: chrome
+  name: '[10] VLESS | 真连接 6ms'
+  network: ws
+  port: 443
+  server: 104.18.41.86
+  servername: ccc.010304.xyz
   tls: true
   type: vless
   udp: true
-  uuid: 52919204-4ed9-42c8-97a0-0f01d007f898
+  uuid: d342d11e-d224-4463-b982-532309285094
+  ws-opts:
+    headers:
+      Host: ccc.010304.xyz
+    path: /
   skip-cert-verify: true
-- client-fingerprint: qq
+- type: vless
+  name: '[11] VLESS | 真连接 6ms'
+  server: 185.148.104.30
+  port: 8880
+  uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: vms.lifetime51.workers.dev
+- client-fingerprint: chrome
+  name: '[12] VLESS | 真连接 6ms'
+  network: ws
+  port: 443
+  server: 188.114.98.0
+  servername: tn1r.eu.cc
+  tls: true
+  type: vless
+  uuid: 22424ee2-6fe3-42ca-9749-6d4c5a8acc82
+  ws-opts:
+    headers:
+      Host: tn1r.eu.cc
+    path: /id-pusat
+  skip-cert-verify: true
+- type: trojan
+  name: '[13] TROJAN | 真连接 7ms'
+  server: 172.66.47.18
+  port: 443
+  password: e7TTceggMwUMg+aFN:F4
+  udp: true
+  tls: true
+  servername: APkD964o1oghlTghHt0L0Of.pAgeS.Dev
+  sni: APkD964o1oghlTghHt0L0Of.pAgeS.Dev
+  skip-cert-verify: true
+  client-fingerprint: chrome
+  network: ws
+  ws-opts:
+    path: /tr/SIeRkg2QvR2Zcpu0SeEMow?ed=2560
+- type: vless
+  name: '[14] VLESS | 真连接 6ms'
+  server: 185.148.107.40
+  port: 8880
+  uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: vms.lifetime55.workers.dev
+- name: '[15] VLESS | 真连接 7ms'
+  type: vless
+  network: ws
+  server: 172.64.152.241
+  port: 443
+  uuid: d342d11e-d224-4463-b982-532309285094
+  servername: ccc.010304.xyz
+  skip-cert-verify: true
+  tls: true
+  encryption: none
+  ws-opts:
+    headers:
+      Host: ccc.010304.xyz
+    path: /
+- name: '[16] VLESS | 真连接 8ms'
+  type: vless
+  network: ws
+  server: 154.218.15.250
+  port: 2083
+  uuid: 40af9131-d540-448a-bc56-5bba147a1dc3
+  servername: proxy-1cu.pages.dev
+  skip-cert-verify: true
+  tls: true
+  udp: true
+  ws-opts:
+    headers:
+      Host: proxy-1cu.pages.dev
+    path: /
+- type: vless
+  name: '[17] VLESS | 真连接 8ms'
+  server: 80.93.202.40
+  port: 8880
+  uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: vms.lifetime02.workers.dev
+- name: '[18] VLESS | 真连接 8ms'
+  server: 104.16.231.20
+  port: 2082
+  type: vless
+  uuid: e5cc16a6-ea42-46b2-82ae-ad2157e1641b
+  tls: false
+  servername: hhlfy.twiladaphne.ndjp.net
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: hhlfy.twiladaphne.ndjp.net
+  udp: true
+  skip-cert-verify: true
+- name: '[19] VLESS | 真连接 8ms'
+  type: vless
+  server: 92.53.189.40
+  port: 8880
+  uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
+  network: ws
+  tls: false
+  ws-opts:
+    path: /
+    headers:
+      Host: vms.lifetime19.workers.dev
+  skip-cert-verify: true
+  udp: true
+- name: '[20] VLESS | 真连接 8ms'
+  network: ws
+  port: 8080
+  server: 104.18.35.86
+  servername: hhlfy.twiladaphne.ndjp.net
+  tls: false
+  type: vless
+  udp: true
+  uuid: e5cc16a6-ea42-46b2-82ae-ad2157e1641b
+  ws-opts:
+    headers:
+      Host: hhlfy.twiladaphne.ndjp.net
+    path: /sg-melbi
+  skip-cert-verify: true
+- client-fingerprint: chrome
+  name: '[21] VLESS | 真连接 8ms'
+  network: ws
+  port: 2096
+  server: 190.93.244.166
+  servername: wQa3mioJJR8fYoZhIui--su3-UCG1GDx.pages.DEv
+  tls: true
+  type: vless
+  uuid: b2853d19-fada-44dc-8d44-967d1af122e0
+  ws-opts:
+    headers:
+      Host: wqa3miojjr8fyozhiui--su3-ucg1gdx.pages.dev
+    path: /eyJqdW5rIjoiWmFzVk5rd2siLCJwcm90b2NvbCI6InZsIiwibW9kZSI6InByZWZpeCIsInBhbmVsSVBzIjpbIlsyYTAyOjg5ODoxNDY6NjQ6Ol0iXX0=
+  skip-cert-verify: true
+- name: '[22] VLESS | 真连接 9ms'
+  type: vless
+  network: ws
+  server: 172.67.65.56
+  port: 2053
+  uuid: 099244b9-2168-4dbd-870e-cbbe9d6eb573
+  servername: whitecreeper.pages.dev
+  skip-cert-verify: true
+  tls: true
+  udp: true
+  client-fingerprint: chrome
+  ws-opts:
+    headers:
+      Host: whitecreeper.pages.dev
+    path: /proxyip
+- name: '[23] VLESS | 真连接 10ms'
+  type: vless
+  network: ws
+  server: 162.159.149.63
+  port: 443
+  uuid: 66969b2e-5e49-4750-9419-167d4bb64c07
+  servername: wallweb11.wallwebc992h7.workers.dev
+  skip-cert-verify: true
+  tls: true
+  udp: true
+  client-fingerprint: chrome
+  ws-opts:
+    headers:
+      Host: wallweb11.wallwebc992h7.workers.dev
+    path: /
+- name: '[24] VLESS | 真连接 11ms'
+  type: vless
+  network: ws
+  server: 104.27.207.122
+  port: 443
+  uuid: 66969b2e-5e49-4750-9419-167d4bb64c07
+  servername: wallweb11.wallwebc992h7.workers.dev
+  skip-cert-verify: true
+  tls: true
+  udp: true
+  client-fingerprint: chrome
+  ws-opts:
+    headers:
+      Host: wallweb11.wallwebc992h7.workers.dev
+    path: /
+- client-fingerprint: chrome
   flow: xtls-rprx-vision
-  name: '[13] VLESS | 真连接 12ms'
+  name: '[25] VLESS | 真连接 12ms'
   network: tcp
   port: 443
   reality-opts:
@@ -190,320 +370,178 @@ proxies:
   udp: true
   uuid: ce18d0eb-5c71-41f9-96e5-1632e22456e4
   skip-cert-verify: true
-- name: '[14] VLESS | 真连接 11ms'
-  server: 172.64.159.157
-  port: 443
+- type: vless
+  name: '[26] VLESS | 真连接 9ms'
+  server: 45.142.120.30
+  port: 8880
+  uuid: 6202b230-417c-4d8e-b624-0f71afa9c75d
+  udp: true
+  tls: false
+  skip-cert-verify: true
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: vms.lifetime08.workers.dev
+- name: '[27] VLESS | 真连接 13ms'
   type: vless
-  uuid: cf92529d-9c4a-4d71-ab87-ae784a2da6bb
+  network: ws
+  server: 172.64.147.85
+  port: 443
+  uuid: e53eacb6-cd30-4964-a57c-febcb5151b98
+  servername: wallweb-4r0.pages.dev
   tls: true
-  servername: gy-cffc3-node-project-lb5p6r204ts3xuoz.pages.dev
+  udp: true
   client-fingerprint: chrome
-  network: ws
   ws-opts:
-    path: /photos/list/feedback/proxyip=ProxyIP.KR.CMLiussss.net?ed=2560
     headers:
-      Host: gy-cffc3-node-project-lb5p6r204ts3xuoz.pages.dev
-  udp: true
+      Host: wallweb-4r0.pages.dev
+    path: /
   skip-cert-verify: true
-- name: '[15] VLESS | 真连接 13ms'
-  server: 8.39.125.54
-  port: 443
+- name: '[28] VLESS | 真连接 14ms'
   type: vless
-  uuid: cf92529d-9c4a-4d71-ab87-ae784a2da6bb
+  network: ws
+  server: 104.21.14.123
+  port: 443
+  uuid: 66969b2e-5e49-4750-9419-167d4bb64c07
+  servername: wallweb11.wallwebc992h7.workers.dev
+  skip-cert-verify: true
   tls: true
-  servername: gy-cffc5-node-project-lb5p6r204ts3xuoz.pages.dev
+  udp: true
   client-fingerprint: chrome
-  network: ws
   ws-opts:
-    path: /jump.html/about/proxyip=ProxyIP.KR.CMLiussss.net?ed=2560
     headers:
-      Host: gy-cffc5-node-project-lb5p6r204ts3xuoz.pages.dev
-  udp: true
-  skip-cert-verify: true
-- name: '[16] VLESS | 真连接 12ms'
-  server: 104.18.37.0
-  port: 443
+      Host: wallweb11.wallwebc992h7.workers.dev
+    path: /
+- name: '[29] VLESS | 真连接 14ms'
   type: vless
-  uuid: cf92529d-9c4a-4d71-ab87-ae784a2da6bb
+  network: ws
+  server: 104.17.53.217
+  port: 443
+  uuid: 66969b2e-5e49-4750-9419-167d4bb64c07
+  servername: wallweb11.wallwebc992h7.workers.dev
+  skip-cert-verify: true
   tls: true
-  servername: gy-cffc2-node-project-lb5p6r204ts3xuoz.pages.dev
+  udp: true
   client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /tag/proxyip=ProxyIP.KR.CMLiussss.net?ed=2560
-    headers:
-      Host: gy-cffc2-node-project-lb5p6r204ts3xuoz.pages.dev
-  udp: true
-  skip-cert-verify: true
-- name: '[17] VLESS | 真连接 13ms'
-  server: 172.64.158.47
-  port: 443
-  type: vless
-  uuid: cf92529d-9c4a-4d71-ab87-ae784a2da6bb
-  tls: true
-  servername: gy-cffc4-node-project-lb5p6r204ts3xuoz.pages.dev
-  client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /site/proxyip=ProxyIP.KR.CMLiussss.net?ed=2560
-    headers:
-      Host: gy-cffc4-node-project-lb5p6r204ts3xuoz.pages.dev
-  udp: true
-  skip-cert-verify: true
-- client-fingerprint: chrome
-  encryption: none
-  name: '[18] VLESS | 真连接 13ms'
-  network: ws
-  port: 443
-  server: 104.26.4.2
-  servername: ccc.010304.xyz
-  skip-cert-verify: true
-  tls: true
-  type: vless
-  uuid: d342d11e-d224-4463-b982-532309285094
   ws-opts:
     headers:
-      Host: ccc.010304.xyz
-    path: /fp=chrome
-- client-fingerprint: chrome
-  flow: xtls-rprx-vision
-  name: '[19] VLESS | 真连接 20ms'
-  network: tcp
-  port: 23576
-  reality-opts:
-    public-key: 1y5h2FGWKXTJ9xLPCqPo6Mw7RxoZzh6fGkEQKNxpZ3s
-    short-id: '01'
-  server: 15.204.97.198
-  servername: fuck.rkn
-  tls: true
-  type: vless
-  udp: true
-  uuid: 48ff2b70-e180-582f-8866-d9a2edeed5f5
-  skip-cert-verify: true
-- client-fingerprint: chrome
-  flow: xtls-rprx-vision
-  name: '[20] VLESS | 真连接 20ms'
-  network: tcp
-  port: 443
-  reality-opts:
-    public-key: nqwCf6oW49tEtmQ0EzxigZ0uu1pg0E30CS54G40Iti0
-    short-id: 4477382ff6d3d41c
-  server: 51.81.203.63
-  servername: www.icloud.com
-  tls: true
-  type: vless
-  udp: true
-  uuid: cb2dbb6a-a1ea-4023-9ace-6466cee57241
-  skip-cert-verify: true
-- name: '[21] VLESS | 真连接 16ms'
-  server: 172.64.155.111
-  port: 443
-  type: vless
-  uuid: cf92529d-9c4a-4d71-ab87-ae784a2da6bb
-  tls: true
-  servername: gy-cffc4-node-project-lb5p6r204ts3xuoz.pages.dev
-  client-fingerprint: chrome
-  network: ws
-  ws-opts:
-    path: /thread/proxyip=ProxyIP.KR.CMLiussss.net?ed=2560
-    headers:
-      Host: gy-cffc4-node-project-lb5p6r204ts3xuoz.pages.dev
-  udp: true
-  skip-cert-verify: true
-- name: '[22] TROJAN | 真连接 22ms'
+      Host: wallweb11.wallwebc992h7.workers.dev
+    path: /
+- name: '[30] TROJAN | 真连接 12ms'
   password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
   port: 443
-  server: 66.163.112.121
+  server: 167.88.61.193
   skip-cert-verify: true
-  sni: www.unlockyourfuturefindyourperfectcareer.com
+  sni: browseseniorrolesandenhanceyourcareertoday.com
   type: trojan
   udp: true
-- alterId: 0
-  cipher: auto
-  name: '[23] VMESS | 真连接 22ms'
-  network: tcp
-  port: 18000
-  server: 84.17.41.2
-  type: vmess
-  udp: true
-  uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
-  skip-cert-verify: true
-- name: '[24] TROJAN | 真连接 31ms'
-  password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
-  port: 443
-  server: 66.163.114.132
-  sni: courses.findconnectwithemployersandbuildprofessionalnetwork.com
-  type: trojan
-  skip-cert-verify: true
-- name: '[25] TROJAN | 真连接 51ms'
-  password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
-  port: 443
-  server: 216.238.80.100
-  skip-cert-verify: true
-  sni: connectwithtopemployersandfindidealjobs.com
-  type: trojan
-  udp: true
-- name: '[26] TROJAN | 真连接 58ms'
-  password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
-  port: 443
-  server: 216.152.147.152
-  skip-cert-verify: true
-  sni: learn.connectingpeoplewithgreatjobs.com
-  type: trojan
-  udp: true
-- client-fingerprint: chrome
-  flow: xtls-rprx-vision
-  name: '[27] VLESS | 真连接 54ms'
-  network: tcp
-  port: 443
-  reality-opts:
-    public-key: xPnpkXu5qfwIArlHKvJsqKJnGdGbJK1tT2GzWMyLohA
-    short-id: 9c56fddf237e8eaf
-  server: 195.211.98.43
-  servername: www.cloudflare.com
-  tls: true
-  type: vless
-  udp: true
-  uuid: 1b4b11d5-4c2d-4533-9a55-636757cdee94
-  skip-cert-verify: true
-- name: '[28] TROJAN | 真连接 60ms'
-  password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
-  port: 443
-  server: 216.152.156.212
-  skip-cert-verify: true
-  sni: courses.healthcarejobshubenhancemedicalprofessionalskillstoday.com
-  type: trojan
-- alterId: 0
-  cipher: auto
-  name: '[29] VMESS | 真连接 60ms'
-  network: tcp
-  port: 18000
-  server: 23.162.200.198
-  type: vmess
-  udp: true
-  uuid: f8c8dc3d-0d37-46b0-8b34-a7232882fcfe
-  skip-cert-verify: true
-- client-fingerprint: firefox
-  flow: xtls-rprx-vision
-  name: '[30] VLESS | 真连接 64ms'
-  network: tcp
-  port: 443
-  reality-opts:
-    public-key: ALT8hIGeZEhi0sQFbXP_ntBg8Xo-v7i0YCLrqTnBxRk
-    short-id: 0990d22f
-  server: 167.17.69.171
-  servername: www.cloudflare.com
-  tls: true
-  type: vless
-  udp: true
-  uuid: 00144519-7e0d-476b-8d28-435576af9262
-  skip-cert-verify: true
 proxy-groups:
 - name: 🚀 节点选择
   type: select
   proxies:
   - ⚡ 自动最快
   - 🛡️ 故障转移
-  - '[01] VMESS | 真连接 2ms'
-  - '[02] VLESS | 真连接 5ms'
+  - '[01] VLESS | 真连接 4ms'
+  - '[02] VMESS | 真连接 4ms'
   - '[03] VLESS | 真连接 5ms'
-  - '[04] TROJAN | 真连接 4ms'
-  - '[05] VLESS | 真连接 4ms'
+  - '[04] VLESS | 真连接 5ms'
+  - '[05] VLESS | 真连接 6ms'
   - '[06] VLESS | 真连接 6ms'
   - '[07] VLESS | 真连接 6ms'
-  - '[08] VLESS | 真连接 7ms'
-  - '[09] VLESS | 真连接 7ms'
-  - '[10] VLESS | 真连接 8ms'
-  - '[11] VLESS | 真连接 8ms'
-  - '[12] VLESS | 真连接 10ms'
-  - '[13] VLESS | 真连接 12ms'
-  - '[14] VLESS | 真连接 11ms'
-  - '[15] VLESS | 真连接 13ms'
-  - '[16] VLESS | 真连接 12ms'
-  - '[17] VLESS | 真连接 13ms'
-  - '[18] VLESS | 真连接 13ms'
-  - '[19] VLESS | 真连接 20ms'
-  - '[20] VLESS | 真连接 20ms'
-  - '[21] VLESS | 真连接 16ms'
-  - '[22] TROJAN | 真连接 22ms'
-  - '[23] VMESS | 真连接 22ms'
-  - '[24] TROJAN | 真连接 31ms'
-  - '[25] TROJAN | 真连接 51ms'
-  - '[26] TROJAN | 真连接 58ms'
-  - '[27] VLESS | 真连接 54ms'
-  - '[28] TROJAN | 真连接 60ms'
-  - '[29] VMESS | 真连接 60ms'
-  - '[30] VLESS | 真连接 64ms'
+  - '[08] VLESS | 真连接 6ms'
+  - '[09] VLESS | 真连接 6ms'
+  - '[10] VLESS | 真连接 6ms'
+  - '[11] VLESS | 真连接 6ms'
+  - '[12] VLESS | 真连接 6ms'
+  - '[13] TROJAN | 真连接 7ms'
+  - '[14] VLESS | 真连接 6ms'
+  - '[15] VLESS | 真连接 7ms'
+  - '[16] VLESS | 真连接 8ms'
+  - '[17] VLESS | 真连接 8ms'
+  - '[18] VLESS | 真连接 8ms'
+  - '[19] VLESS | 真连接 8ms'
+  - '[20] VLESS | 真连接 8ms'
+  - '[21] VLESS | 真连接 8ms'
+  - '[22] VLESS | 真连接 9ms'
+  - '[23] VLESS | 真连接 10ms'
+  - '[24] VLESS | 真连接 11ms'
+  - '[25] VLESS | 真连接 12ms'
+  - '[26] VLESS | 真连接 9ms'
+  - '[27] VLESS | 真连接 13ms'
+  - '[28] VLESS | 真连接 14ms'
+  - '[29] VLESS | 真连接 14ms'
+  - '[30] TROJAN | 真连接 12ms'
   - DIRECT
 - name: ⚡ 自动最快
   type: url-test
   proxies:
-  - '[01] VMESS | 真连接 2ms'
-  - '[02] VLESS | 真连接 5ms'
+  - '[01] VLESS | 真连接 4ms'
+  - '[02] VMESS | 真连接 4ms'
   - '[03] VLESS | 真连接 5ms'
-  - '[04] TROJAN | 真连接 4ms'
-  - '[05] VLESS | 真连接 4ms'
+  - '[04] VLESS | 真连接 5ms'
+  - '[05] VLESS | 真连接 6ms'
   - '[06] VLESS | 真连接 6ms'
   - '[07] VLESS | 真连接 6ms'
-  - '[08] VLESS | 真连接 7ms'
-  - '[09] VLESS | 真连接 7ms'
-  - '[10] VLESS | 真连接 8ms'
-  - '[11] VLESS | 真连接 8ms'
-  - '[12] VLESS | 真连接 10ms'
-  - '[13] VLESS | 真连接 12ms'
-  - '[14] VLESS | 真连接 11ms'
-  - '[15] VLESS | 真连接 13ms'
-  - '[16] VLESS | 真连接 12ms'
-  - '[17] VLESS | 真连接 13ms'
-  - '[18] VLESS | 真连接 13ms'
-  - '[19] VLESS | 真连接 20ms'
-  - '[20] VLESS | 真连接 20ms'
-  - '[21] VLESS | 真连接 16ms'
-  - '[22] TROJAN | 真连接 22ms'
-  - '[23] VMESS | 真连接 22ms'
-  - '[24] TROJAN | 真连接 31ms'
-  - '[25] TROJAN | 真连接 51ms'
-  - '[26] TROJAN | 真连接 58ms'
-  - '[27] VLESS | 真连接 54ms'
-  - '[28] TROJAN | 真连接 60ms'
-  - '[29] VMESS | 真连接 60ms'
-  - '[30] VLESS | 真连接 64ms'
+  - '[08] VLESS | 真连接 6ms'
+  - '[09] VLESS | 真连接 6ms'
+  - '[10] VLESS | 真连接 6ms'
+  - '[11] VLESS | 真连接 6ms'
+  - '[12] VLESS | 真连接 6ms'
+  - '[13] TROJAN | 真连接 7ms'
+  - '[14] VLESS | 真连接 6ms'
+  - '[15] VLESS | 真连接 7ms'
+  - '[16] VLESS | 真连接 8ms'
+  - '[17] VLESS | 真连接 8ms'
+  - '[18] VLESS | 真连接 8ms'
+  - '[19] VLESS | 真连接 8ms'
+  - '[20] VLESS | 真连接 8ms'
+  - '[21] VLESS | 真连接 8ms'
+  - '[22] VLESS | 真连接 9ms'
+  - '[23] VLESS | 真连接 10ms'
+  - '[24] VLESS | 真连接 11ms'
+  - '[25] VLESS | 真连接 12ms'
+  - '[26] VLESS | 真连接 9ms'
+  - '[27] VLESS | 真连接 13ms'
+  - '[28] VLESS | 真连接 14ms'
+  - '[29] VLESS | 真连接 14ms'
+  - '[30] TROJAN | 真连接 12ms'
   url: https://www.google.com/generate_204
   interval: 300
   tolerance: 50
 - name: 🛡️ 故障转移
   type: fallback
   proxies:
-  - '[01] VMESS | 真连接 2ms'
-  - '[02] VLESS | 真连接 5ms'
+  - '[01] VLESS | 真连接 4ms'
+  - '[02] VMESS | 真连接 4ms'
   - '[03] VLESS | 真连接 5ms'
-  - '[04] TROJAN | 真连接 4ms'
-  - '[05] VLESS | 真连接 4ms'
+  - '[04] VLESS | 真连接 5ms'
+  - '[05] VLESS | 真连接 6ms'
   - '[06] VLESS | 真连接 6ms'
   - '[07] VLESS | 真连接 6ms'
-  - '[08] VLESS | 真连接 7ms'
-  - '[09] VLESS | 真连接 7ms'
-  - '[10] VLESS | 真连接 8ms'
-  - '[11] VLESS | 真连接 8ms'
-  - '[12] VLESS | 真连接 10ms'
-  - '[13] VLESS | 真连接 12ms'
-  - '[14] VLESS | 真连接 11ms'
-  - '[15] VLESS | 真连接 13ms'
-  - '[16] VLESS | 真连接 12ms'
-  - '[17] VLESS | 真连接 13ms'
-  - '[18] VLESS | 真连接 13ms'
-  - '[19] VLESS | 真连接 20ms'
-  - '[20] VLESS | 真连接 20ms'
-  - '[21] VLESS | 真连接 16ms'
-  - '[22] TROJAN | 真连接 22ms'
-  - '[23] VMESS | 真连接 22ms'
-  - '[24] TROJAN | 真连接 31ms'
-  - '[25] TROJAN | 真连接 51ms'
-  - '[26] TROJAN | 真连接 58ms'
-  - '[27] VLESS | 真连接 54ms'
-  - '[28] TROJAN | 真连接 60ms'
-  - '[29] VMESS | 真连接 60ms'
-  - '[30] VLESS | 真连接 64ms'
+  - '[08] VLESS | 真连接 6ms'
+  - '[09] VLESS | 真连接 6ms'
+  - '[10] VLESS | 真连接 6ms'
+  - '[11] VLESS | 真连接 6ms'
+  - '[12] VLESS | 真连接 6ms'
+  - '[13] TROJAN | 真连接 7ms'
+  - '[14] VLESS | 真连接 6ms'
+  - '[15] VLESS | 真连接 7ms'
+  - '[16] VLESS | 真连接 8ms'
+  - '[17] VLESS | 真连接 8ms'
+  - '[18] VLESS | 真连接 8ms'
+  - '[19] VLESS | 真连接 8ms'
+  - '[20] VLESS | 真连接 8ms'
+  - '[21] VLESS | 真连接 8ms'
+  - '[22] VLESS | 真连接 9ms'
+  - '[23] VLESS | 真连接 10ms'
+  - '[24] VLESS | 真连接 11ms'
+  - '[25] VLESS | 真连接 12ms'
+  - '[26] VLESS | 真连接 9ms'
+  - '[27] VLESS | 真连接 13ms'
+  - '[28] VLESS | 真连接 14ms'
+  - '[29] VLESS | 真连接 14ms'
+  - '[30] TROJAN | 真连接 12ms'
   url: https://www.google.com/generate_204
   interval: 300
 rules:
